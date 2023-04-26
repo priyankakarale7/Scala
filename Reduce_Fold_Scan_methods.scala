@@ -18,5 +18,14 @@ object Reduce_Fold_Scan_methods {
     println(lst.reduceRight(_-_));
 
     println(lst2.reduceRight(_+_));
+
+    println(lst.reduceRight((x,y) => {println(x+","+y);x-y; }));
+
+    println(lst.foldLeft(19)(_+_));
+    println(lst2.foldLeft("z")(_+_));
+
+    println(lst.scanLeft(10)(_+_));
+    println(lst2.scanLeft("z")(_+_));
+
   }
 }
