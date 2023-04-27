@@ -118,11 +118,12 @@ object Solution {
         // do nothing case
         dp(i)(j) = dp(i - 1)(j - 1)
       } else {
-        /**
-        *       i-1,    i
-        * j-1 replace  insertion     
-        *  j   delete  dp(i)(j)
+        /*
+               i-1,    i
+         j-1 replace  insertion     
+         j   delete  dp(i)(j)
         */
+        
         val replace = dp(i - 1)(j - 1)
         val insert = dp(i)(j - 1)
         val delete = dp(i - 1)(j)
