@@ -71,15 +71,23 @@ object Practice_Questions {
   }
 
 //Question 3
-  var list1 : List[Char] = List('a','b','c','d');
-  var list2 : List[Char] = List('a','b','f','g');
-  //var anslst = list1--list2;
+  var list1 : List[String] = List("a","b","c","d");
+  var list2 : List[String] = List("a","b","f","g");
+
+  var lstSet = toSet(list1);
+  var lstSet2 = list2.toSet;
+
+  var anslst = list1.filterNot(lstSet2); // list1-list2
+  var anslst2 = list2.filterNot(lstSet); //list2- list1
 
 
 def main(args: Array[String]): Unit = {
     println(checkFreq);
     println(checkList);
 
-  //println(anslst);
+  println(lstSet);
+  println(lstSet2)
+  println(anslst);
+  println(anslst2);
   }
 }
