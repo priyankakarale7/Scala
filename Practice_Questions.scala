@@ -91,3 +91,44 @@ def main(args: Array[String]): Unit = {
   println(anslst2);
   }
 }
+
+
+//Question 4 "Edit DIstance"
+
+object Solution {
+    def minDistance(word1: String, word2: String): Int = {
+        val m = word1.length
+        val n = word2.length
+    
+    //dp(i)(j) represents the minimum distance transforming from length i of substring word1 to length j of substring word2
+    
+
+    val dp = Array.tabulate(m + 1, n + 1) {
+      case (0, j) => j
+      case (i, 0) => i
+      case _ => 0
+    }
+
+
+    for (i <- 1 to m; j <- 1 to n) {
+
+      /* i-1 is word1 index, j-1 is word2 index */
+
+      if (word1(i - 1) == word2(j - 1)) {
+        // do nothing case
+        dp(i)(j) = dp(i - 1)(j - 1)
+      } else {
+        /**
+        *       i-1,    i
+        * j-1 replace  insertion     
+        *  j   delete  dp(i)(j)
+        */
+        val replace = dp(i - 1)(j - 1)
+        val insert = dp(i)(j - 1)
+        val delete = dp(i - 1)(j)
+        dp(i)(j) = (replace min insert min delete) + 1
+      }
+    }
+    dp(m)(n)
+    }
+}
